@@ -744,6 +744,9 @@ uint8_t bcm2835_spi_transfer(uint8_t value)
     /* Set TA = 1 */
     bcm2835_peri_set_bits(paddr, BCM2835_SPI0_CS_TA, BCM2835_SPI0_CS_TA);
 
+    // give the up some time 
+    bcm2835_delayMicroseconds(25);
+	
     /* Maybe wait for TXD */
     while (!(bcm2835_peri_read(paddr) & BCM2835_SPI0_CS_TXD))
 	;
